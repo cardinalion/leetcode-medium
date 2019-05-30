@@ -24,7 +24,7 @@ class Solution:
         return ret
         
             
-    def combine(self, original: list, digit: str) -> List[str]:
+    def combine(self, original: List[str], digit: str) -> List[str]:
         ret = []
         for i in self.num[digit]:
             for j in original:
