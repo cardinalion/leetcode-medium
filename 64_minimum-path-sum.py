@@ -17,15 +17,13 @@ class Solution:
                 summ += grid[k][0]
             return summ
         
-        minsum = [[grid[0][0]] * n for row in range(m)]
-        
         for i in range(1, m):
-            minsum[i][0] = minsum[i-1][0] + grid[i][0]
+            grid[i][0] += grid[i-1][0]
         for j in range(1, n):
-            minsum[0][j] = minsum[0][j-1] + grid[0][j]
+            grid[0][j] += grid[0][j-1]
         
         for i in range(1, m):
             for j in range(1, n):
-                minsum[i][j] = min(minsum[i-1][j], minsum[i][j-1]) + grid[i][j]
+                grid[i][j] += min(grid[i-1][j], grid[i][j-1])
         
-        return minsum[m-1][n-1]
+        return grid[m-1][n-1]
