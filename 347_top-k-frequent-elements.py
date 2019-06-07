@@ -47,9 +47,30 @@ class Solution:
         c = collections.Counter(nums)
             return heapq.nlargest(k, c, c.get) #really cool way to write the key function
 
+        
 # fourth method
 # using quick select
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        
+        def quick_select(left, right):
+                pivot = left
+                l, r = left, right
+                while l < r:
+                    while l < r and counts[r][1] <= counts[pivot][1]:
+                        r -= 1
+                    while l < r and counts[l][1] >= counts[pivot][1]:
+                        l += 1
+                    counts[l], counts[r] = counts[r], counts[l]
+                counts[left], counts[l] = counts[l], counts[left]
+
+                if l + 1 == k:
+                    return counts[:l+1]
+                elif l + 1 < k:
+                    return quick_select(l + 1, right)
+                else:
+                    return quick_select(left, l - 1)
+                
         c = collections.Counter(nums)
+        return [i[0] for i in quick_select(0, len(c) - 1)]
