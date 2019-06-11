@@ -1,11 +1,12 @@
-# refered to leetcode discussion section
-# firstly, used nth_element to find the top half with an average O(n) time
-# then, put the smaller half in the odds position and the larger the opposite
-# finally, adjust positions where value equals the median
-# O(n) time and O(1) space
+/* refered to leetcode discussion section
+ * firstly, used nth_element to find the top half with an average O(n) time
+ * then, put the smaller half in the odds position and the larger the opposite
+ * finally, adjust positions where value equals the median
+ * O(n) time and O(1) space
+ */
 
-# TIP: THINK OF DIFFERENT EXAMPLES TO TEST THE BOUNDARY
-# WATCH OUT LOOPS
+// TIP: THINK OF DIFFERENT EXAMPLES TO TEST THE BOUNDARY
+// WATCH OUT LOOPS
 
 class Solution {
 public:
