@@ -18,7 +18,7 @@
  * };
  */
  
-# using stack, fake interator
+// using stack, fake interator
 class NestedIterator {
     
 private:
@@ -60,7 +60,7 @@ public:
  */
  
  
-# using stack, real iterator
+// using stack, real iterator
  
 class NestedIterator {
 
