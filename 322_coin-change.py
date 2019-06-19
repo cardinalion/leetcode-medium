@@ -1,5 +1,4 @@
 # Approach 1: dynamic programming
-
 # Tips: no recursive calls, use for loop from 1 to target
 
 class Solution:
@@ -18,7 +17,32 @@ class Solution:
             return -1
         return arr[-1]
         
+        
 # Approach 2: BFS
+# minimum path, iterate over levels
+
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:   
+        
+        covered, covering = [0]
+        count =  0
+        visited = [False] * (amount+1)
+        visited[0] = True
+        
+        while covered:
+            count += 1
+            for v in covered:
+                for coin in coins:
+                    newval = v + coin
+                    if newval <= amount:
+                        if not visited[newval]:
+                            if newval == amount:
+                                return count
+                            visited[newval] = True
+                            covering.append(newval)
+            covered, covering = covering, []
+        return -1
+    
 
 # Approach 3: DFS
 # Use the large-denomitation coins first, stop till unreplacable (must use more)
