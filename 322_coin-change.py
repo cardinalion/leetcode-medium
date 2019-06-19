@@ -21,3 +21,25 @@ class Solution:
 # Approach 2: BFS
 
 # Approach 3: DFS
+# Use the large-denomitation coins first, stop till unreplacable (must use more)
+# Tips: distinguish the boundaries and iterators
+
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:   
+        coins.sort(reverse=True)
+        self.res = 2**31-1
+        l = len(coins)
+        
+        def dfs(num, remain, count):
+            if not remain:
+                self.res = min(count, self.res)
+            
+            for j in range(num, l):
+                if coins[j] <= remain < coins[j] * (self.res-count):
+                    dfs(j, remain-coins[j], count+1)
+        
+        for i in range(l):
+            dfs(i, amount, 0)
+        
+        return self.res if self.res != 2**31-1 else -1
+    
